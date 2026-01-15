@@ -22,7 +22,7 @@
     },
     {
       image:
-        "https://images.unsplash.com/photo-1592919505780-30395071d48f?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?q=80&w=800&auto=format&fit=crop",
       title: "Pinhal Clube de Golfe",
       subtitle: "Strategy & Precision",
       description:
@@ -40,7 +40,7 @@
     },
     {
       image:
-        "https://images.unsplash.com/photo-1591123120675-6f758a6ce9d2?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1600791447714-04d1c9780adf?q=80&w=800&auto=format&fit=crop",
       title: "Laguna Clube de Golfe",
       subtitle: "Unique Links Style",
       description:

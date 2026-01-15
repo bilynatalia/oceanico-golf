@@ -1,0 +1,212 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import TopBar from "../components/TopBar.svelte";
+import Navigation from "../components/Navigation.svelte";
+import Footer from "../components/Footer.svelte";
+import "../styles/global.css";
+
+const courses = [
+  { name: "Victoria Clube de Golfe", href: "/courses/victoria/" },
+  { name: "The Old Course", href: "/courses/old-course/" },
+  { name: "Pinhal Clube de Golfe", href: "/courses/pinhal/" },
+  { name: "Millennium Clube de Golfe", href: "/courses/millennium/" },
+  { name: "Laguna Clube de Golfe", href: "/courses/laguna/" },
+];
+---
+
+<BaseLayout
+  title="Book Your Tee Time | Oceanico Golf"
+  description="Book your tee time at any of Oceanico Golf's five championship courses in Vilamoura, Algarve. Easy online booking for green fees and golf packages."
+>
+  <TopBar client:load />
+  <Navigation client:load />
+
+  <!-- Hero Section -->
+  <section class="bg-oceanico-green py-20 text-white text-center">
+    <div class="container mx-auto px-4">
+      <h1 class="font-serif text-4xl md:text-5xl font-bold mb-4">
+        Book Your Tee Time
+      </h1>
+      <p class="text-oceanico-gold uppercase tracking-widest text-sm mb-4">
+        Reserve Your Round Today
+      </p>
+      <p class="text-lg max-w-2xl mx-auto text-gray-200">
+        Choose from five championship courses and secure your preferred tee
+        time.
+      </p>
+    </div>
+  </section>
+
+  <!-- Booking Form -->
+  <section class="py-20 bg-oceanico-light">
+    <div class="container mx-auto px-4">
+      <div class="max-w-2xl mx-auto bg-white shadow-lg p-8">
+        <h2
+          class="font-serif text-2xl text-oceanico-green font-bold mb-6 text-center"
+        >
+          Tee Time Request
+        </h2>
+        <form class="space-y-6">
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1"
+                >First Name *</label
+              >
+              <input
+                type="text"
+                required
+                class="w-full border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-oceanico-gold focus:border-transparent"
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1"
+                >Last Name *</label
+              >
+              <input
+                type="text"
+                required
+                class="w-full border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-oceanico-gold focus:border-transparent"
+              />
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1"
+                >Email *</label
+              >
+              <input
+                type="email"
+                required
+                class="w-full border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-oceanico-gold focus:border-transparent"
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1"
+                >Phone</label
+              >
+              <input
+                type="tel"
+                class="w-full border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-oceanico-gold focus:border-transparent"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1"
+              >Select Course *</label
+            >
+            <select
+              required
+              class="w-full border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-oceanico-gold focus:border-transparent"
+            >
+              <option value="">Choose a course...</option>
+              {
+                courses.map((course) => (
+                  <option value={course.name}>{course.name}</option>
+                ))
+              }
+            </select>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1"
+                >Preferred Date *</label
+              >
+              <input
+                type="date"
+                required
+                class="w-full border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-oceanico-gold focus:border-transparent"
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1"
+                >Preferred Time</label
+              >
+              <select
+                class="w-full border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-oceanico-gold focus:border-transparent"
+              >
+                <option>Morning (Before 10am)</option>
+                <option>Mid-Morning (10am - 12pm)</option>
+                <option>Afternoon (12pm - 3pm)</option>
+                <option>Late Afternoon (After 3pm)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1"
+                >Number of Players *</label
+              >
+              <select
+                required
+                class="w-full border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-oceanico-gold focus:border-transparent"
+              >
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1"
+                >Buggy Required?</label
+              >
+              <select
+                class="w-full border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-oceanico-gold focus:border-transparent"
+              >
+                <option>No</option>
+                <option>Yes - 1 Buggy</option>
+                <option>Yes - 2 Buggies</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1"
+              >Additional Requests</label
+            >
+            <textarea
+              rows="3"
+              class="w-full border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-oceanico-gold focus:border-transparent"
+              placeholder="Club hire, lessons, special requirements..."
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full bg-oceanico-gold text-white py-4 font-bold uppercase tracking-wider hover:bg-oceanico-green transition"
+          >
+            Request Booking
+          </button>
+        </form>
+
+        <p class="text-center text-gray-500 text-sm mt-6">
+          Our booking team will confirm your tee time within 24 hours.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Info -->
+  <section class="py-12 bg-white">
+    <div class="container mx-auto px-4 text-center">
+      <p class="text-gray-600 mb-4">Need immediate assistance?</p>
+      <p class="text-oceanico-green font-bold text-xl">
+        Call us: <a href="tel:+351289310333" class="hover:text-oceanico-gold"
+          >+351 289 310 333</a
+        >
+      </p>
+      <p class="text-gray-500 text-sm mt-2">
+        Email: <a
+          href="mailto:golf@oceanicogolf.com"
+          class="hover:text-oceanico-gold">golf@oceanicogolf.com</a
+        >
+      </p>
+    </div>
+  </section>
+
+  <Footer client:visible />
+</BaseLayout>

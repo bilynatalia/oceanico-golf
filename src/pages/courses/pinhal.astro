@@ -1,0 +1,130 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import TopBar from "../../components/TopBar.svelte";
+import Navigation from "../../components/Navigation.svelte";
+import Footer from "../../components/Footer.svelte";
+import "../../styles/global.css";
+
+const courseInfo = {
+  name: "Pinhal Clube de Golfe",
+  subtitle: "Strategy & Precision",
+  designer: "Frank Pennink",
+  holes: 18,
+  par: 72,
+  length: "6,350m",
+  image:
+    "https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?q=80&w=1200&auto=format&fit=crop",
+  description:
+    "Characterized by rolling parkland terrain covered with umbrella pines, Pinhal presents a challenge for golfers of all abilities. The course demands accuracy and strategic thinking, with narrow fairways weaving through the beautiful pine forest.",
+  features: [
+    "Rolling parkland terrain",
+    "Beautiful umbrella pines",
+    "Strategic shot-making required",
+    "Narrow, tree-lined fairways",
+    "Well-defended greens",
+    "Peaceful forest setting",
+  ],
+};
+---
+
+<BaseLayout
+  title="Pinhal Clube de Golfe | Oceanico Golf"
+  description="Play Pinhal Clube de Golfe featuring rolling parkland terrain and umbrella pines. A strategic course demanding precision in Vilamoura, Algarve."
+>
+  <TopBar client:load />
+  <Navigation client:load />
+
+  <!-- Hero -->
+  <section class="relative h-[60vh] flex items-center justify-center">
+    <div class="absolute inset-0">
+      <img
+        src={courseInfo.image}
+        alt={courseInfo.name}
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-black/50"></div>
+    </div>
+    <div class="relative z-10 text-center text-white px-4">
+      <p class="text-oceanico-gold uppercase tracking-widest text-sm mb-4">
+        {courseInfo.subtitle}
+      </p>
+      <h1 class="font-serif text-4xl md:text-6xl font-bold mb-4">
+        {courseInfo.name}
+      </h1>
+      <p class="text-lg">Designed by {courseInfo.designer}</p>
+    </div>
+  </section>
+
+  <!-- Course Info -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8 max-w-4xl mx-auto text-center">
+        <div class="bg-oceanico-light p-6">
+          <div class="text-oceanico-gold text-3xl font-bold">
+            {courseInfo.holes}
+          </div>
+          <div class="text-gray-600 text-sm uppercase tracking-wider">
+            Holes
+          </div>
+        </div>
+        <div class="bg-oceanico-light p-6">
+          <div class="text-oceanico-gold text-3xl font-bold">
+            {courseInfo.par}
+          </div>
+          <div class="text-gray-600 text-sm uppercase tracking-wider">Par</div>
+        </div>
+        <div class="bg-oceanico-light p-6">
+          <div class="text-oceanico-gold text-3xl font-bold">
+            {courseInfo.length}
+          </div>
+          <div class="text-gray-600 text-sm uppercase tracking-wider">
+            Length
+          </div>
+        </div>
+        <div class="bg-oceanico-light p-6">
+          <div class="text-oceanico-gold text-3xl font-bold">🌲</div>
+          <div class="text-gray-600 text-sm uppercase tracking-wider">
+            Parkland
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Description -->
+  <section class="py-16 bg-oceanico-light">
+    <div class="container mx-auto px-4 max-w-4xl">
+      <div class="grid md:grid-cols-2 gap-12">
+        <div>
+          <h2 class="font-serif text-3xl text-oceanico-green font-bold mb-6">
+            About the Course
+          </h2>
+          <p class="text-gray-600 mb-6">{courseInfo.description}</p>
+          <a
+            href="/contact-us/"
+            class="inline-block bg-oceanico-gold text-white px-8 py-3 font-bold uppercase tracking-wider hover:bg-oceanico-green transition"
+          >
+            Book Tee Time
+          </a>
+        </div>
+        <div>
+          <h3 class="font-serif text-xl text-oceanico-green font-bold mb-4">
+            Course Features
+          </h3>
+          <ul class="space-y-3">
+            {
+              courseInfo.features.map((feature) => (
+                <li class="flex items-start text-gray-600">
+                  <span class="text-oceanico-gold mr-2">✓</span>
+                  {feature}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer client:visible />
+</BaseLayout>

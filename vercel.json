@@ -22,6 +22,26 @@
       "source": "/vilamoura-golf-subscriptions.html",
       "destination": "/vilamoura-golf-subscriptions/",
       "permanent": true
+    },
+    {
+      "source": "/gift-vouchers.html",
+      "destination": "/gift-vouchers/",
+      "permanent": true
+    },
+    {
+      "source": "/agents.html",
+      "destination": "/agents/",
+      "permanent": true
+    },
+    {
+      "source": "/subscribers.html",
+      "destination": "/vilamoura-golf-subscriptions/",
+      "permanent": true
+    },
+    {
+      "source": "/subscribers-area.html",
+      "destination": "/vilamoura-golf-subscriptions/",
+      "permanent": true
     }
   ]
 }

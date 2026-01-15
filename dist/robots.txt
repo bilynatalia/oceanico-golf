@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://oceanicogolf.com/sitemap.xml
+Sitemap: https://www.oceanicogolf.com/sitemap.xml

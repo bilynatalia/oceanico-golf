@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import TopBar from "../components/TopBar.svelte";
+import Navigation from "../components/Navigation.svelte";
+import Hero from "../components/Hero.svelte";
+import IntroSection from "../components/IntroSection.svelte";
+import CoursesSection from "../components/CoursesSection.svelte";
+import ServicesBanner from "../components/ServicesBanner.svelte";
+import GiftVouchers from "../components/GiftVouchers.svelte";
+import Footer from "../components/Footer.svelte";
+import "../styles/global.css";
+---
+
+<BaseLayout title="Oceanico Golf | Premier Golf Destinations">
+  <TopBar client:load />
+  <Navigation client:load />
+  <Hero client:visible />
+  <IntroSection />
+  <CoursesSection client:visible />
+  <ServicesBanner />
+  <GiftVouchers />
+  <Footer client:visible />
+</BaseLayout>

@@ -1,0 +1,145 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import TopBar from "../components/TopBar.svelte";
+import Navigation from "../components/Navigation.svelte";
+import Footer from "../components/Footer.svelte";
+import "../styles/global.css";
+
+const subscriptionPlans = [
+  {
+    name: "Bronze",
+    price: "€999",
+    period: "per year",
+    features: [
+      "10% discount on green fees",
+      "Priority booking (48h advance)",
+      "Newsletter with exclusive offers",
+      "Clubhouse member rates",
+    ],
+  },
+  {
+    name: "Silver",
+    price: "€1,999",
+    period: "per year",
+    features: [
+      "20% discount on green fees",
+      "Priority booking (72h advance)",
+      "5 complimentary buggy rentals",
+      "Pro shop discounts",
+      "Guest passes (2 per year)",
+    ],
+    popular: true,
+  },
+  {
+    name: "Gold",
+    price: "€3,999",
+    period: "per year",
+    features: [
+      "30% discount on green fees",
+      "Priority booking (1 week advance)",
+      "Unlimited buggy rentals",
+      "Complimentary locker",
+      "Guest passes (5 per year)",
+      "Exclusive member events",
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Vilamoura Golf Subscriptions | Oceanico Golf"
+  description="Join Oceanico Golf subscription programs for exclusive benefits, discounts, and priority access to our championship courses in Vilamoura."
+>
+  <TopBar client:load />
+  <Navigation client:load />
+
+  <!-- Hero Section -->
+  <section class="bg-oceanico-green py-20 text-white text-center">
+    <div class="container mx-auto px-4">
+      <h1 class="font-serif text-4xl md:text-5xl font-bold mb-4">
+        Vilamoura Golf Subscriptions
+      </h1>
+      <p class="text-oceanico-gold uppercase tracking-widest text-sm mb-4">
+        Exclusive Member Benefits
+      </p>
+      <p class="text-lg max-w-2xl mx-auto text-gray-200">
+        Unlock premium benefits and savings with our annual subscription plans.
+        Enjoy priority access to all five championship courses.
+      </p>
+    </div>
+  </section>
+
+  <!-- Subscription Plans -->
+  <section class="py-20 bg-oceanico-light">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        {
+          subscriptionPlans.map((plan) => (
+            <div
+              class={`bg-white shadow-lg p-8 text-center relative ${plan.popular ? "ring-2 ring-oceanico-gold" : ""}`}
+            >
+              {plan.popular && (
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-oceanico-gold text-white px-4 py-1 text-xs uppercase font-bold tracking-wider">
+                  Most Popular
+                </div>
+              )}
+              <h3 class="font-serif text-2xl text-oceanico-green font-bold mb-2">
+                {plan.name}
+              </h3>
+              <div class="text-4xl font-bold text-oceanico-gold mb-1">
+                {plan.price}
+              </div>
+              <p class="text-gray-500 text-sm mb-6">{plan.period}</p>
+              <ul class="text-left space-y-3 mb-8">
+                {plan.features.map((feature) => (
+                  <li class="flex items-start text-gray-600">
+                    <span class="text-oceanico-gold mr-2">✓</span>
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+              <a
+                href="/contact-us/"
+                class={`block py-3 font-bold uppercase tracking-widest transition ${plan.popular ? "bg-oceanico-gold text-white hover:bg-oceanico-green" : "bg-gray-100 text-oceanico-green hover:bg-oceanico-gold hover:text-white"}`}
+              >
+                Subscribe
+              </a>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="font-serif text-3xl text-oceanico-green font-bold mb-8">
+        Why Subscribe?
+      </h2>
+      <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        <div>
+          <div class="text-oceanico-gold text-4xl mb-4">💳</div>
+          <h3 class="font-bold text-lg mb-2">Save Money</h3>
+          <p class="text-gray-600">
+            Enjoy significant discounts on every round you play.
+          </p>
+        </div>
+        <div>
+          <div class="text-oceanico-gold text-4xl mb-4">📅</div>
+          <h3 class="font-bold text-lg mb-2">Priority Access</h3>
+          <p class="text-gray-600">Book your tee times before non-members.</p>
+        </div>
+        <div>
+          <div class="text-oceanico-gold text-4xl mb-4">🎁</div>
+          <h3 class="font-bold text-lg mb-2">Exclusive Perks</h3>
+          <p class="text-gray-600">
+            Access member-only events and special offers.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer client:visible />
+</BaseLayout>

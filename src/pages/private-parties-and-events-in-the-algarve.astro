@@ -1,0 +1,119 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import TopBar from "../components/TopBar.svelte";
+import Navigation from "../components/Navigation.svelte";
+import Footer from "../components/Footer.svelte";
+import "../styles/global.css";
+
+const eventTypes = [
+  {
+    title: "Corporate Events",
+    description:
+      "Host your next corporate event in one of Europe's premier golf destinations. From team-building tournaments to executive retreats.",
+    image:
+      "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=800&auto=format&fit=crop",
+  },
+  {
+    title: "Private Parties",
+    description:
+      "Celebrate special occasions with exclusive access to our stunning clubhouse facilities and gourmet catering services.",
+    image:
+      "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?q=80&w=800&auto=format&fit=crop",
+  },
+  {
+    title: "Weddings",
+    description:
+      "Say 'I do' overlooking the fairways. Our venues offer breathtaking backdrops for your perfect day.",
+    image:
+      "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop",
+  },
+  {
+    title: "Gala Dinners",
+    description:
+      "Elegant dining experiences with world-class cuisine and impeccable service in our prestigious clubhouse.",
+    image:
+      "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=800&auto=format&fit=crop",
+  },
+];
+---
+
+<BaseLayout
+  title="Private Parties and Events in the Algarve | Oceanico Golf"
+  description="Host unforgettable events at Oceanico Golf. Corporate gatherings, weddings, private parties, and tournaments in the beautiful Algarve."
+>
+  <TopBar client:load />
+  <Navigation client:load />
+
+  <!-- Hero Section -->
+  <section class="bg-oceanico-green py-20 text-white text-center">
+    <div class="container mx-auto px-4">
+      <h1 class="font-serif text-4xl md:text-5xl font-bold mb-4">
+        Private Parties & Events
+      </h1>
+      <p class="text-oceanico-gold uppercase tracking-widest text-sm mb-4">
+        Unforgettable Experiences in the Algarve
+      </p>
+      <p class="text-lg max-w-2xl mx-auto text-gray-200">
+        From intimate gatherings to grand celebrations, our world-class venues
+        and dedicated team ensure every event is extraordinary.
+      </p>
+    </div>
+  </section>
+
+  <!-- Event Types -->
+  <section class="py-20 bg-oceanico-light">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="font-serif text-3xl text-oceanico-green font-bold mb-4">
+          Event Types
+        </h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          Whatever the occasion, we have the perfect venue and package to make
+          it memorable.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        {
+          eventTypes.map((event) => (
+            <div class="bg-white shadow-lg overflow-hidden group">
+              <div class="h-56 overflow-hidden">
+                <img
+                  src={event.image}
+                  alt={event.title}
+                  class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                />
+              </div>
+              <div class="p-8">
+                <h3 class="font-serif text-2xl text-oceanico-green font-bold mb-3">
+                  {event.title}
+                </h3>
+                <p class="text-gray-600">{event.description}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-oceanico-gold py-16 text-white text-center">
+    <div class="container mx-auto px-4">
+      <h2 class="font-serif text-3xl font-bold mb-4">
+        Ready to Plan Your Event?
+      </h2>
+      <p class="mb-8 max-w-xl mx-auto">
+        Our events team is ready to help you create an unforgettable experience.
+      </p>
+      <a
+        href="/contact-us/"
+        class="inline-block bg-white text-oceanico-gold px-8 py-3 font-bold uppercase tracking-widest hover:bg-oceanico-green hover:text-white transition"
+      >
+        Get in Touch
+      </a>
+    </div>
+  </section>
+
+  <Footer client:visible />
+</BaseLayout>

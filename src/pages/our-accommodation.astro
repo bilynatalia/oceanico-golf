@@ -1,0 +1,117 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import TopBar from "../components/TopBar.svelte";
+import Navigation from "../components/Navigation.svelte";
+import Footer from "../components/Footer.svelte";
+import "../styles/global.css";
+
+const accommodations = [
+  {
+    name: "Hilton Vilamoura",
+    image:
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800&auto=format&fit=crop",
+    description:
+      "A luxurious 5-star resort with direct access to the golf courses, world-class spa, and stunning pool facilities.",
+  },
+  {
+    name: "The Lake Resort",
+    image:
+      "https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=800&auto=format&fit=crop",
+    description:
+      "Contemporary elegance with panoramic lake views, gourmet dining, and personalized golf packages.",
+  },
+  {
+    name: "Pine Cliffs Resort",
+    image:
+      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?q=80&w=800&auto=format&fit=crop",
+    description:
+      "Perched atop the cliffs of the Algarve, offering breathtaking ocean views and award-winning dining.",
+  },
+  {
+    name: "Vila Vita Parc",
+    image:
+      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=800&auto=format&fit=crop",
+    description:
+      "A private estate with subtropical gardens, Michelin-starred restaurants, and exclusive villa options.",
+  },
+];
+---
+
+<BaseLayout
+  title="Our Accommodation | Oceanico Golf"
+  description="Discover luxury accommodation options near Oceanico Golf courses in Vilamoura, Algarve. From 5-star resorts to private villas."
+>
+  <TopBar client:load />
+  <Navigation client:load />
+
+  <!-- Hero Section -->
+  <section class="bg-oceanico-green py-20 text-white text-center">
+    <div class="container mx-auto px-4">
+      <h1 class="font-serif text-4xl md:text-5xl font-bold mb-4">
+        Our Accommodation
+      </h1>
+      <p class="text-oceanico-gold uppercase tracking-widest text-sm mb-4">
+        Luxury Stays in the Algarve
+      </p>
+      <p class="text-lg max-w-2xl mx-auto text-gray-200">
+        Experience the ultimate golf getaway with our carefully selected
+        accommodation partners. Each property offers easy access to our
+        championship courses.
+      </p>
+    </div>
+  </section>
+
+  <!-- Accommodations Grid -->
+  <section class="py-20 bg-oceanico-light">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-2 gap-8">
+        {
+          accommodations.map((item) => (
+            <div class="bg-white shadow-lg overflow-hidden group">
+              <div class="h-64 overflow-hidden">
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                />
+              </div>
+              <div class="p-8">
+                <h3 class="font-serif text-2xl text-oceanico-green font-bold mb-3">
+                  {item.name}
+                </h3>
+                <p class="text-gray-600 mb-4">{item.description}</p>
+                <a
+                  href="#"
+                  class="text-oceanico-gold uppercase text-sm font-bold tracking-wider hover:text-oceanico-green transition"
+                >
+                  View Details →
+                </a>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-oceanico-gold py-16 text-white text-center">
+    <div class="container mx-auto px-4">
+      <h2 class="font-serif text-3xl font-bold mb-4">
+        Need Help Planning Your Stay?
+      </h2>
+      <p class="mb-8 max-w-xl mx-auto">
+        Our concierge team can help you find the perfect accommodation and
+        create a bespoke golf package.
+      </p>
+      <a
+        href="/contact-us/"
+        class="inline-block bg-white text-oceanico-gold px-8 py-3 font-bold uppercase tracking-widest hover:bg-oceanico-green hover:text-white transition"
+      >
+        Contact Us
+      </a>
+    </div>
+  </section>
+
+  <Footer client:visible />
+</BaseLayout>

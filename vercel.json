@@ -1,0 +1,27 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "framework": "astro",
+  "redirects": [
+    {
+      "source": "/contact-us.html",
+      "destination": "/contact-us/",
+      "permanent": true
+    },
+    {
+      "source": "/our-accommodation.html",
+      "destination": "/our-accommodation/",
+      "permanent": true
+    },
+    {
+      "source": "/private-parties-and-events-in-the-algarve.html",
+      "destination": "/private-parties-and-events-in-the-algarve/",
+      "permanent": true
+    },
+    {
+      "source": "/vilamoura-golf-subscriptions.html",
+      "destination": "/vilamoura-golf-subscriptions/",
+      "permanent": true
+    }
+  ]
+}

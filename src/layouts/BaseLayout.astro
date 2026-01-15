@@ -1,0 +1,84 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  keywords?: string;
+  ogImage?: string;
+}
+
+const siteUrl = "https://oceanicogolf.com";
+
+const {
+  title = "Oceanico Golf | Premier Golf Destinations",
+  description = "Discover Europe's finest golf courses. Five championship courses in the Algarve, Portugal. Experience the tradition, beauty, and challenge of the game.",
+  keywords = "golf, Algarve, Portugal, Vilamoura, golf courses, championship golf, Victoria Course, Old Course, Pinhal, Millennium, Laguna, golf resort, golf vacation",
+  ogImage = "https://cloudassetskita.com/uploads/apple-touch-icon-57x57-25b63e9c.png",
+} = Astro.props;
+
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content="Oceanico Golf" />
+
+    <!-- Robots -->
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://cloudassetskita.com/uploads/apple-touch-icon-57x57-25b63e9c.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="https://cloudassetskita.com/uploads/apple-touch-icon-57x57-25b63e9c.png"
+    />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content="Oceanico Golf" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalUrl} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={ogImage} />
+
+    <!-- Additional SEO -->
+    <meta name="theme-color" content="#1B4332" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+  </head>
+  <body class="font-sans text-gray-800 bg-oceanico-light">
+    <slot />
+  </body>
+</html>

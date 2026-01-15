@@ -4,7 +4,7 @@ export const GET: APIRoute = () => {
   const robotsTxt = `User-agent: *
 Allow: /
 
-Sitemap: https://oceanicogolf.com/sitemap.xml`;
+Sitemap: https://www.oceanicogolf.com/sitemap.xml`;
 
   return new Response(robotsTxt, {
     headers: {

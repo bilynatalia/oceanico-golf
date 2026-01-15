@@ -40,7 +40,7 @@
     },
     {
       image:
-        "https://images.unsplash.com/photo-1600791447714-04d1c9780adf?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1611374243147-44a702c2d44c?q=80&w=800&auto=format&fit=crop",
       title: "Laguna Clube de Golfe",
       subtitle: "Unique Links Style",
       description:
